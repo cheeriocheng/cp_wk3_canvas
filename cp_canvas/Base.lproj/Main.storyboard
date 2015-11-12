@@ -59,6 +59,9 @@
                             <outletCollection property="gestureRecognizers" destination="9vc-gS-c21" appends="YES" id="ilp-hp-lff"/>
                         </connections>
                     </view>
+                    <connections>
+                        <outlet property="trayView" destination="HrU-Fw-UYf" id="hgq-Sc-asL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="8ik-Th-y11" userLabel="pan Gesture Recognizer"/>

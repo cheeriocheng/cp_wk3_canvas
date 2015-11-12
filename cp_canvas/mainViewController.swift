@@ -16,7 +16,7 @@ class mainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+print(  trayView.center )
         // Do any additional setup after loading the view.
     }
 
@@ -27,12 +27,16 @@ class mainViewController: UIViewController {
         let translation = panGestureRecognizer.translationInView(view)
         
         if panGestureRecognizer.state == UIGestureRecognizerState.Began {
-                    print("Gesture began at: \(point)")
+            print("Gesture began at: \(point)")
+            trayOriginalCenter = trayView.center
+            
         } else if panGestureRecognizer.state == UIGestureRecognizerState.Changed {
                     print("Gesture changed at: \(point)")
+            
+            trayView.center = CGPoint(x: trayOriginalCenter.x, y: trayOriginalCenter.y+translation.y)
         } else if panGestureRecognizer.state == UIGestureRecognizerState.Ended {
                     print("Gesture ended at: \(point)")
-                }
+        }
 
         
     }
