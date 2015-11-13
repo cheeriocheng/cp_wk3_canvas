@@ -94,21 +94,27 @@ class mainViewController: UIViewController {
             
             let imageView = panGestureRecognizer.view as! UIImageView
             
+            //step 3
             newlyCreatedFace = UIImageView(image: imageView.image)
             newlyCreatedFace.center = imageView.center
             view.addSubview(newlyCreatedFace)
-            
-            //            print(newlyCreatedFace.center)
             newlyCreatedFace.center.y += trayView.frame.origin.y
-            
             newlyCreatedFaceOriginalCenter = newlyCreatedFace.center
+//            print(newlyCreatedFaceOriginalCenter)
             
-            print(newlyCreatedFaceOriginalCenter)
+            
+            //step 4
+            // trigger "onCustomPan" function, which we define later in the code
+            var facePanGestureRecognizer = UIPanGestureRecognizer(target: self, action: "onCustomPan:")
+            //attach to a view
+            newlyCreatedFace.addGestureRecognizer(facePanGestureRecognizer)
+            newlyCreatedFace.userInteractionEnabled = true
+            
+            
             
         } else if panGestureRecognizer.state == UIGestureRecognizerState.Changed {
             print("Gesture changed at: \(point)")
             newlyCreatedFace.center = CGPoint(x: newlyCreatedFaceOriginalCenter.x + translation.x, y: newlyCreatedFaceOriginalCenter.y + translation.y)
-            
             
             
         } else if panGestureRecognizer.state == UIGestureRecognizerState.Ended {
@@ -119,10 +125,46 @@ class mainViewController: UIViewController {
     }
     
     
+
+    func onCustomPan(sender: UIPanGestureRecognizer){
+        
+        var point = sender.locationInView(view)
+        var velocity = sender.velocityInView(view)
+        var translation = sender.translationInView(view)
+        
+//        
+//        newlyCreatedFace = UIImageView(image: imageView.image)
+//        newlyCreatedFace.center = imageView.center
+//        view.addSubview(newlyCreatedFace)
+//        newlyCreatedFace.center.y += trayView.frame.origin.y
+//        newlyCreatedFaceOriginalCenter = newlyCreatedFace.center
+    
+        
+        if sender.state == UIGestureRecognizerState.Began {
+            
+            newlyCreatedFace = sender.view as! UIImageView
+            newlyCreatedFaceOriginalCenter = newlyCreatedFace.center
+
+            
+            print("Gesture began at: \(point)")
+        } else if sender.state == UIGestureRecognizerState.Changed {
+            print("Gesture changed at: \(point)")
+            
+            newlyCreatedFace.center = CGPoint(x: newlyCreatedFaceOriginalCenter.x + translation.x, y: newlyCreatedFaceOriginalCenter.y + translation.y)
+            
+            
+        } else if sender.state == UIGestureRecognizerState.Ended {
+            print("Gesture ended at: \(point)")
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
     
     
