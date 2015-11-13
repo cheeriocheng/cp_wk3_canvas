@@ -8,9 +8,9 @@
 
 import UIKit
 
-    
-class mainViewController: UIViewController {
 
+class mainViewController: UIViewController {
+    
     @IBOutlet weak var trayView: UIView!
     var trayOriginalCenter: CGPoint!
     
@@ -18,11 +18,14 @@ class mainViewController: UIViewController {
     var trayUp: CGPoint!
     var trayDown: CGPoint!
     
+    var newlyCreatedFace : UIImageView!
+    var newlyCreatedFaceOriginalCenter: CGPoint!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//print(  trayView.center )
+        //print(  trayView.center )
         // Do any additional setup after loading the view.
         
         trayDownOffset = 160
@@ -30,8 +33,11 @@ class mainViewController: UIViewController {
         trayDown = CGPoint(x: trayView.center.x, y: trayView.center.y+trayDownOffset)
         
         
+        
+        
+        
     }
-
+    
     
     @IBAction func didPanTray(panGestureRecognizer: UIPanGestureRecognizer) {
         
@@ -41,19 +47,19 @@ class mainViewController: UIViewController {
         
         
         if panGestureRecognizer.state == UIGestureRecognizerState.Began {
-//            print("Gesture began at: \(point)")
+            //            print("Gesture began at: \(point)")
             trayOriginalCenter = trayView.center
             
         } else if panGestureRecognizer.state == UIGestureRecognizerState.Changed {
-//            print("Gesture changed at: \(point)")
+            //            print("Gesture changed at: \(point)")
             
             trayView.center = CGPoint(x: trayOriginalCenter.x, y: trayOriginalCenter.y+translation.y)
         } else if panGestureRecognizer.state == UIGestureRecognizerState.Ended {
             
-//            print("Gesture ended at: \(point)")
+            //            print("Gesture ended at: \(point)")
             
             let velocity = panGestureRecognizer.velocityInView(view)
-           // print (velocity.y)
+            // print (velocity.y)
             //going down
             if (velocity.y>0){
                 UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options:[] , animations: { () -> Void in
@@ -62,7 +68,7 @@ class mainViewController: UIViewController {
                 })
                 
             }
-            //going up
+                //going up
             else if (velocity.y<0){
                 UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options:[] , animations: { () -> Void in
                     self.trayView.center = self.trayUp
@@ -71,33 +77,46 @@ class mainViewController: UIViewController {
             }
             
         }
-
+        
         
     }
     
     
-//    
-//    @IBAction func didPanTray(panGestureRecognizer: UIPanGestureRecognizer) {
-//        
-//        print("in didPanTray")
-//        
-//        let point = panGestureRecognizer.locationInView(view)
-//        let velocity = panGestureRecognizer.velocityInView(view)
-//        let translation = panGestureRecognizer.translationInView(view)
-//        
-//        if panGestureRecognizer.state == UIGestureRecognizerState.Began {
-//            print("Gesture began at: \(point)")
-//        } else if panGestureRecognizer.state == UIGestureRecognizerState.Changed {
-//            print("Gesture changed at: \(point)")
-//        } else if panGestureRecognizer.state == UIGestureRecognizerState.Ended {
-//            print("Gesture ended at: \(point)")
-//        }
-    
+    @IBAction func didPanFace(panGestureRecognizer: UIPanGestureRecognizer) {
+        //        print("didpanface")
+        let point = panGestureRecognizer.locationInView(view)
         
         
-//    }
-
-    
+        let translation = panGestureRecognizer.translationInView(view)
+        
+        if panGestureRecognizer.state == UIGestureRecognizerState.Began {
+            print("Gesture began at: \(point)")
+            
+            let imageView = panGestureRecognizer.view as! UIImageView
+            
+            newlyCreatedFace = UIImageView(image: imageView.image)
+            newlyCreatedFace.center = imageView.center
+            view.addSubview(newlyCreatedFace)
+            
+            //            print(newlyCreatedFace.center)
+            newlyCreatedFace.center.y += trayView.frame.origin.y
+            
+            newlyCreatedFaceOriginalCenter = newlyCreatedFace.center
+            
+            print(newlyCreatedFaceOriginalCenter)
+            
+        } else if panGestureRecognizer.state == UIGestureRecognizerState.Changed {
+            print("Gesture changed at: \(point)")
+            newlyCreatedFace.center = CGPoint(x: newlyCreatedFaceOriginalCenter.x + translation.x, y: newlyCreatedFaceOriginalCenter.y + translation.y)
+            
+            
+            
+        } else if panGestureRecognizer.state == UIGestureRecognizerState.Ended {
+            
+            print("Gesture ended at: \(point)")
+        }
+        
+    }
     
     
     override func didReceiveMemoryWarning() {
@@ -106,15 +125,15 @@ class mainViewController: UIViewController {
     }
     
     
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
