@@ -18,31 +18,31 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="down_arrow" id="aBl-v6-2HM">
-                                        <rect key="frame" x="149" y="7" width="20" height="14"/>
+                                        <rect key="frame" x="149" y="10" width="20" height="14"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="excited" id="bxs-jv-YoZ">
-                                        <rect key="frame" x="129" y="32" width="60" height="60"/>
+                                        <rect key="frame" x="129" y="38" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="happy" id="YXM-4q-Sqk">
-                                        <rect key="frame" x="32" y="111" width="60" height="60"/>
+                                        <rect key="frame" x="31" y="117" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="sad" id="w7S-EY-Rbe">
-                                        <rect key="frame" x="129" y="111" width="60" height="60"/>
+                                        <rect key="frame" x="129" y="117" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="tongue" id="wbq-eb-Fhf">
-                                        <rect key="frame" x="230" y="111" width="60" height="60"/>
+                                        <rect key="frame" x="229" y="117" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="wink" id="0Mn-pc-qp9">
-                                        <rect key="frame" x="230" y="32" width="60" height="60"/>
+                                        <rect key="frame" x="229" y="38" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="dead" id="3Fr-fd-ftT">
-                                        <rect key="frame" x="32" y="32" width="60" height="60"/>
+                                        <rect key="frame" x="31" y="38" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                 </subviews>
